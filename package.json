@@ -1,0 +1,22 @@
+{
+  "name": "shipmondo-mcp",
+  "version": "1.0.0",
+  "description": "Read-only MCP server for the Shipmondo API",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "shipmondo-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
