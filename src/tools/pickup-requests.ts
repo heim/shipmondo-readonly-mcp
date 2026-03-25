@@ -1,11 +1,11 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
-import { PaginationSchema } from "../types.js";
+import { PaginationSchema, idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const GetPickupRequestSchema = z.object({
-  id: z.string().describe("Pickup request ID"),
+  id: idString().describe("Pickup request ID"),
 });
 
 export function registerPickupRequestTools(

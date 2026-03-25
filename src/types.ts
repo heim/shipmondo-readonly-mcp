@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+/** Reusable ID schema — alphanumeric, hyphens, underscores only. */
+export const idString = () =>
+  z.string().regex(/^[\w-]+$/, "ID must be alphanumeric, hyphens, or underscores");
+
 export const PaginationSchema = z.object({
   page: z
     .number()

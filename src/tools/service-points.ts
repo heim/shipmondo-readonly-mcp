@@ -1,6 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
+import { idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const ListServicePointsSchema = z.object({
@@ -15,7 +16,7 @@ const ListServicePointsSchema = z.object({
 });
 
 const GetServicePointSchema = z.object({
-  id: z.string().describe("Service point ID"),
+  id: idString().describe("Service point ID"),
   carrier_code: z.string().optional().describe("Carrier code"),
   country_code: z.string().optional().describe("Country code"),
 });

@@ -1,14 +1,15 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
+import { idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const GetIntegrationSchema = z.object({
-  id: z.string().describe("Bookkeeping integration ID"),
+  id: idString().describe("Bookkeeping integration ID"),
 });
 
 const GetPaymentGatewaySchema = z.object({
-  id: z.string().describe("Payment gateway ID"),
+  id: idString().describe("Payment gateway ID"),
 });
 
 export function registerBookkeepingTools(

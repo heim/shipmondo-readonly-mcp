@@ -1,11 +1,11 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
-import { PaginationSchema } from "../types.js";
+import { PaginationSchema, idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const ListSalesOrdersSchema = PaginationSchema.extend({
-  order_id: z.string().optional().describe("Filter by order ID"),
+  order_id: idString().optional().describe("Filter by order ID"),
   reference: z.string().optional().describe("Filter by reference"),
   order_state: z
     .string()
@@ -22,7 +22,7 @@ const ListSalesOrdersSchema = PaginationSchema.extend({
 });
 
 const GetSalesOrderSchema = z.object({
-  id: z.string().describe("Sales order ID"),
+  id: idString().describe("Sales order ID"),
 });
 
 export function registerSalesOrderTools(

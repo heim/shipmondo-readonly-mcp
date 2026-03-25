@@ -1,7 +1,7 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
-import { PaginationSchema } from "../types.js";
+import { PaginationSchema, idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const ListItemsSchema = PaginationSchema.extend({
@@ -12,7 +12,7 @@ const ListItemsSchema = PaginationSchema.extend({
 });
 
 const GetItemSchema = z.object({
-  id: z.string().describe("Item ID"),
+  id: idString().describe("Item ID"),
 });
 
 export function registerItemTools(

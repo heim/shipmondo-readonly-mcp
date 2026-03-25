@@ -1,15 +1,15 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
-import { PaginationSchema } from "../types.js";
+import { PaginationSchema, idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const GetReturnPortalSchema = z.object({
-  id: z.string().describe("Return portal ID"),
+  id: idString().describe("Return portal ID"),
 });
 
 const ListReturnPortalShipmentsSchema = PaginationSchema.extend({
-  id: z.string().describe("Return portal ID"),
+  id: idString().describe("Return portal ID"),
 });
 
 export function registerReturnPortalTools(

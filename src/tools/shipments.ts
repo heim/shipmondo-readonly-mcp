@@ -1,11 +1,11 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import { ShipmondoClient } from "../client.js";
-import { PaginationSchema } from "../types.js";
+import { PaginationSchema, idString } from "../types.js";
 import { wrapToolError, toText } from "../utils.js";
 
 const ListShipmentsSchema = PaginationSchema.extend({
-  shipment_id: z.string().optional().describe("Filter by shipment ID"),
+  shipment_id: idString().optional().describe("Filter by shipment ID"),
   reference: z.string().optional().describe("Filter by reference"),
   carrier_code: z.string().optional().describe("Filter by carrier code"),
   product_code: z.string().optional().describe("Filter by product code"),
@@ -24,11 +24,11 @@ const ListShipmentsSchema = PaginationSchema.extend({
 });
 
 const GetShipmentSchema = z.object({
-  id: z.string().describe("Shipment ID"),
+  id: idString().describe("Shipment ID"),
 });
 
 const GetShipmentLabelsSchema = z.object({
-  id: z.string().describe("Shipment ID"),
+  id: idString().describe("Shipment ID"),
   label_format: z
     .string()
     .optional()
